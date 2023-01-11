@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap');
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+
+.wrapper {
+  justify-content: space-between;
+}
+
+#login-container {
+  margin-top: -25px;
+  right: 30px;
+  position: absolute;
+}
+
+.logged-in-text {
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.logged-in-text:hover {
+  color: blue;
+}
+
+h1, h2 {
+  font-family: Ubuntu;
+  margin: 5vh;
+  height: 5vh;
+  color: #fff;
+  text-align: center;
+}
+
+.confirmations-container {
+  text-align: center;
+  color: #fff;
+}
+
+.vis-timeline {
+  font-family: Ubuntu, sans-serif;
+  margin-left: 5%;
+  border-color: #222;
+  border-radius: 10px;
+  background: rgb(152,152,152);
+  background: linear-gradient(159deg, rgba(152,152,152,0.8449754901960784) 0%, rgba(103,126,204,0.9066001400560224) 100%);
+}
+
+.vis-text {
+  color: #fff;
+}
+
+.vis-panel.vis-bottom {
+  padding: 10px;
+}
+
+.vis-item {
+  background-color: #222;
+  border: 2px solid #ccc;
+  transition: all 0.2s;
+}
+
+.vis-item:hover {
+  background-color: green;
+}
+
+.vis-item.vis-selected {
+  background-color: green;
+}
+
+.vis-item.vis-dot {
+  border: 8px solid #ccc 100%;
+}
+
+.vis-item.vis-text {
+  margin: 10px;
+}
+
+.vis-item.vis-box, .vis-item.vis-range {
+  border-color: #ccc;
+  border-radius: 7px 11px;
+}
+
+.vis-item-content {
+  color: #fff;
+}
+
+.vis-shadow.vis-top, .vis-shadow.vis-bottom {
+  visibility: visible;
+}
+
+.editor-overview {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin-left: 10%;
+  color: #fff;
+  border-radius: 20px;
+}
+
+.editor-overview td, .editor-overview th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.accept-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin-left: 10%;
+  color: #fff;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+}
+
+.accept-table td, .accept-table th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+.accept-table th {
+  width: 60%;
+}
+
+.accept-table .desc {
+  height: 20vh;
+  width: 60%
+}
+
+.accept-table .start, .accept-table .end {
+  width: 30%;
+}
+
+.accept-table .submit {
+  width: 60%;
+}
