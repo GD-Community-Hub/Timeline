@@ -76,13 +76,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Reset Password - GDT</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/bg.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 <body>
+<header id="menu-container">
+        <div id="menu-wrapper">
+            <div id="hamburger-menu"><span></span><span></span><span></span></div>
+        </div>
+        <ul class="menu-list accordion">
+            <li id="nav1" class="toggle accordion-toggle">
+                <a class="menu-link" href="index.php">The Timeline</a>
+            </li>
+            <li id="nav2" class="toggle accordion-toggle">
+                <span class="icon-plus"></span>
+                <a class="menu-link" href="#">Documentation</a>
+            </li>
+            <ul class="menu-submenu accordion-content">
+                <li><a class="head" href="docs/submit-event.html">How to Become an Author/Editor</a></li>
+                <li><a class="head" href="docs/howto-author.html">How to use the Author Central</a></li>
+                <li><a class="head" href="docs/howto-editor.html">How to use the Editor Central</a></li>
+                <li><a class="head" href="docs/help/help-central.html">Help Central</a></li>
+            </ul>
+            <li id="nav3" class="toggle accordion-toggle">
+                <span class="icon-plus"></span>
+                <a class="menu-link" href="#">AdminSpace</a>
+            </li>
+            <ul class="menu-submenu accordion-content">
+                <li><a class="head" href="adminspace/author-central.php">Author Central</a></li>
+                <li><a class="head" href="adminspace/editor-central.php">Editor Central</a></li>
+            </ul>
+        </ul>
+    </header>
 <div class="wrapped-wrapper">
     <div class="wrapper">
         <h2>Reset Password</h2>
