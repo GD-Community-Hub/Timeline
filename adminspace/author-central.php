@@ -5,6 +5,7 @@ if(!isset($_SESSION["isAuthor"]) || $_SESSION["isAuthor"] == "0"){
     header("Location: lurkin.php");
 }
 
+// if form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_REQUEST["name"];
     $date_start = $_REQUEST["date_start"];
@@ -12,10 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_REQUEST["desc"];
     $timelinegroup = $_REQUEST["group"];
     $type = $_REQUEST["type"];
+    $coverImg = $_REQUEST["coverImg"];
 
-    $sql = "INSERT INTO events (name, date_start, date_end, description, timelinegroup, type) VALUES ('$name', '$date_start', '$date_end', '$description', '$timelinegroup', '$type')";
+    // instert into database for timeline use
+    $sql = "INSERT INTO events (name, date_start, date_end, description, timelinegroup, type, coverimg) VALUES ('$name', '$date_start', '$date_end', '$description', '$timelinegroup', '$type', '$coverImg')";
     if($date_end == '') {
-        $sql = "INSERT INTO events (name, date_start, description, type) VALUES ('$name', '$date_start', '$description', '$type')";
+        $sql = "INSERT INTO events (name, date_start, description, type, coverimg) VALUES ('$name', '$date_start', '$description', '$type', '$coverImg')";
     }
     $rs = mysqli_query($link, $sql);
     if($rs) {
@@ -23,6 +26,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<script>alert('ERROR: Wasn't able to submit successfully.');</script>";
     }
+
+    // make a file with all the stuff
+    $mainString = "
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>".$_REQUEST["name"]."</title>
+                <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>
+                <script type=\"text/javascript\" src=\"../js/menu.js\"></script>
+                <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
+                <link rel=\"stylesheet\" href=\"../css/main.css\">
+                <link rel=\"stylesheet\" href=\"../css/bg.css\">
+                <link rel=\"icon\" type=\"image/x-icon\" href=\"../img/favicon.ico\">
+            </head>
+            <body>
+                <header id=\"menu-container\">
+                    <div id=\"menu-wrapper\">
+                        <div id=\"hamburger-menu\">
+                            <span></span>
+                            <span></span>
+                            <span></span></div>
+                    </div>
+                    <ul class=\"menu-list accordion\">
+                        <li id=\"nav1\" class=\"toggle accordion-toggle\">
+                            <a class=\"menu-link\" href=\"../index.php\">The Timeline</a>
+                        </li>
+                        <li id=\"nav2\" class=\"toggle accordion-toggle\">
+                            <span class=\"icon-plus\"></span>
+                            <a class=\"menu-link\" href=\"#\">Documentation</a>
+                        </li>
+                        <ul class=\"menu-submenu accordion-content\">
+                            <li>
+                                <a class=\"head\" href=\"submit-event.html\">How to Become an Author/Editor</a>
+                            </li>
+                            <li>
+                                <a class=\"head\" href=\"howto-author.html\">How to use the Author Central</a>
+                            </li>
+                            <li>
+                                <a class=\"head\" href=\"howto-editor.html\">How to use the Editor Central</a>
+                            </li>
+                            <li>
+                                <a class=\"head\" href=\"help/help-central.html\">Help Central</a>
+                            </li>
+                        </ul>
+                        <li id=\"nav3\" class=\"toggle accordion-toggle\">
+                            <span class=\"icon-plus\"></span>
+                            <a class=\"menu-link\" href=\"#\">AdminSpace</a>
+                        </li>
+                        <ul class=\"menu-submenu accordion-content\">
+                            <li>
+                                <a class=\"head\" href=\"../adminspace/author-central.php\">Author Central</a>
+                            </li>
+                            <li>
+                                <a class=\"head\" href=\"../adminspace/editor-central.php\">Editor Central</a>
+                            </li>
+                        </ul>
+                </ul>
+            </header>
+            <div class=\"wrapped-wrapper\">
+                <div class=\"wrapper\">
+                    <h1>
+                        <b>".$name."</b>
+                    </h1>
+                    <h2>".$date_start."</h2>
+                    <img src=\"".$coverImg."\" width=\"20%\">
+                    <p>".$description."</p>
+                </div>
+            </div>
+        </body>
+        </html>";
+    $fileName = trim($name);
+
+    $f = fopen("../articles/".$fileName.".html", "w+");
+    fwrite($f, $mainString);
+    fclose($f);
 }
 ?>
 <!DOCTYPE html>
@@ -68,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </ul>
             </ul>
         </header>
-    <div class="wrapped-wrapper">
+        <div class="wrapped-wrapper">
     <div class="wrapper">
         <h1>Author Central</h1>
         <h2>Submit an Entry</h2>
@@ -77,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="name" class="form-control" required>
-            </div>    
+            </div>
             <div class="form-group">
                 <label>Date</label>
                 <input type="date" name="date_start" class="form-control" required>
@@ -87,8 +165,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="date" name="date_end" class="form-control">
             </div>
             <div class="form-group">
+                <label>Cover Image</label>
+                <input type="text" name="coverImg" class="form-control" value="Provide a link to Imgur or such service." required>
+            </div>
+            <div class="form-group">
                 <label>Description</label>
-                <input type="textarea" name="desc" class="form-control" required>
+                <textarea name="desc" class="form-control" cols="50" rows="20" required></textarea>
             </div>
             <div class="form-group">
                 <label>Group</label><br>
@@ -102,6 +184,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="point"><input type="radio" id="point" name="type" value="point">Point</label><br>
                 <label for="range"><input type="radio" id="range" name="type" value="range">Range</label><br>
             </div>
+            <!---
+            <div class="form-group">
+                <label>Tag</label><br>
+                <label for="box"><input type="radio" id="box" name="type" value="box" checked>Box</label><br>
+                <label for="point"><input type="radio" id="point" name="type" value="point">Point</label><br>
+                <label for="range"><input type="radio" id="range" name="type" value="range">Range</label><br>
+            </div>
+-->
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
@@ -109,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span id="confirmation">
             </span>
         </form>
-    </div>    
 </div>
+    </div>    
   </body>
 </html>
