@@ -34,10 +34,17 @@ $.ajax({
       max: '1/1/2024',
       locale: 'en',
       preferZoom: true,
-      zoomMin: 100 * 60 * 24
+      zoomMin: 100 * 60 * 24,
     };
 
     var timeline = new vis.Timeline(container, items, options);
+
+    timeline.on("click", function (properties) {
+      if(properties.item){
+        const item = items.get(properties.item);
+        console.log(item.title);
+      }
+    });
   },
   error: function (err) {
     console.log('Error', err);
