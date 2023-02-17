@@ -9,12 +9,11 @@ if(!isset($_SESSION["isAuthor"]) || $_SESSION["isAuthor"] == "0"){
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $slug = $_REQUEST["id"];
     $name = $_REQUEST["name"];
-    $date_start = $_REQUEST["date_start"];
-    $date_end = $_REQUEST["date_end"];
+    $date_start = date("d. m. Y", strtotime($_REQUEST["date_start"]));
+    $date_end = date("d. m. Y", strtotime($_REQUEST["date_end"]));
     $description = $_REQUEST["desc"];
     $timelinegroup = $_REQUEST["group"];
     $type = $_REQUEST["type"];
-    $coverImg = $_REQUEST["coverImg"];
 
     // instert into database for timeline use
     $sql = "INSERT INTO events (name, date_start, date_end, description, timelinegroup, type, slug) VALUES ('$name', '$date_start', '$date_end', '$description', '$timelinegroup', '$type', '$slug')";
@@ -33,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!DOCTYPE html>
         <html>
             <head>
-                <title>".$_REQUEST["id"]."</title>
+                <title>".$slug."</title>
                 <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>
                 <script type=\"text/javascript\" src=\"../js/menu.js\"></script>
                 <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
@@ -96,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </body>
         </html>";
-    $fileName = trim($name);
+    $fileName = trim($slug);
 
     $f = fopen("../articles/".$fileName.".html", "w+");
     fwrite($f, $mainString);
@@ -166,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
                 <label>Id</label>
-                <input type="text" name="coverImg" class="form-control" value="Provide a link to Imgur or such service." required>
+                <input type="text" name="id" class="form-control" value="Provide a link to Imgur or such service." required>
             </div>
             <div class="form-group">
                 <label>Description</label>
