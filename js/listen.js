@@ -1,5 +1,5 @@
 $.ajax({
-    url: "/js-data.json",
+    url: "http://gdtimeline.wz.cz/js-data.json",
     success: function (data) {
         setTimeout(function () {
             const elements = document.getElementsByClassName("vis-item-content");
@@ -20,7 +20,8 @@ $.ajax({
             alert('Failed to load data.json.\nPlease run this example on a server.');
         }
         else {
-            alert('Failed to load data.json.');
+            alert('Failed to load js-data.json.');
         }
     }
 });
+

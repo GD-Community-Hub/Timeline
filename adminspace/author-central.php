@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_REQUEST["name"];
     $date_start = date("d. m. Y", strtotime($_REQUEST["date_start"]));
     $date_end = date("d. m. Y", strtotime($_REQUEST["date_end"]));
-    $description = $_REQUEST["desc"];
+    $description = $_REQUEST["content"];
     $timelinegroup = $_REQUEST["group"];
     $type = $_REQUEST["type"];
 
@@ -108,7 +108,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Author Central - GDT</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="../js/menu.js"></script>
+    <script type="text/javascript" src="../js/listen.js"></script>
     <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/ujyrzbph9buaadvi88n79xzcafcfhf43wk3lyfyc3rcbp6au/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../css/main.css">
@@ -150,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Author Central</h1>
         <h2>Submit an Entry</h2>
         <p>Please fill this form to submit an entry to the GDT.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form method="post">
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="name" class="form-control" required>
@@ -168,8 +170,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" name="id" class="form-control" value="Provide a link to Imgur or such service." required>
             </div>
             <div class="form-group">
-                <label>Description</label>
-                <textarea name="desc" class="form-control" cols="50" rows="20" required></textarea>
+            <label>Article content</label>
+                <textarea class="form-control" cols="50" rows="20" id="tinymce"></textarea>
+            </div>
+            <div class="form-group" id="desc-span">
             </div>
             <div class="form-group">
                 <label>Group</label><br>
@@ -184,9 +188,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="range"><input type="radio" id="range" name="type" value="range">Range</label><br>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="submit" class="btn btn-primary" id="author-submit" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
             </div>
+            <script>
+                tinymce.init({
+                    selector: 'textarea#tinymce',
+                    height: 750,
+                    plugins: [
+                      'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                      'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                      'insertdatetime', 'media', 'table', 'help', 'wordcount', 'save'
+                    ],
+                    toolbar: 'undo redo | blocks | ' +
+                    'bold italic backcolor | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                    'removeformat | help' + 'save',
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+                });
+                document.addEventListener("DOMContentLoaded", function() {
+                    // add event listener to button
+                    document.getElementById("author-submit").addEventListener("click", function() {
+                        function send (e) {
+                          var content = e.data.content;
+                          // send content to PHP file using AJAX
+                          var xhr = new XMLHttpRequest();
+                          xhr.open("POST", "author-central.php");
+                          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                          xhr.onreadystatechange = function() {
+                            if (xhr.readyState === 4 && xhr.status === 200) {
+                              // handle response from PHP file
+                              console.log(xhr.responseText);
+                            }
+                          };
+                          xhr.send(encodeURIComponent(content));
+                    }})});
+                </script>
             <span id="confirmation">
             </span>
         </form>
