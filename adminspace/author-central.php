@@ -7,6 +7,7 @@ if(!isset($_SESSION["isAuthor"]) || $_SESSION["isAuthor"] == "0"){
 
 // if form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $slug = $_REQUEST["id"];
     $name = $_REQUEST["name"];
     $date_start = $_REQUEST["date_start"];
     $date_end = $_REQUEST["date_end"];
@@ -16,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $coverImg = $_REQUEST["coverImg"];
 
     // instert into database for timeline use
-    $sql = "INSERT INTO events (name, date_start, date_end, description, timelinegroup, type, coverimg) VALUES ('$name', '$date_start', '$date_end', '$description', '$timelinegroup', '$type', '$coverImg')";
+    $sql = "INSERT INTO events (name, date_start, date_end, description, timelinegroup, type, slug) VALUES ('$name', '$date_start', '$date_end', '$description', '$timelinegroup', '$type', '$slug')";
     if($date_end == '') {
-        $sql = "INSERT INTO events (name, date_start, description, type, coverimg) VALUES ('$name', '$date_start', '$description', '$type', '$coverImg')";
+        $sql = "INSERT INTO events (name, date_start, description, type, slug) VALUES ('$name', '$date_start', '$description', '$type', '$slug')";
     }
     $rs = mysqli_query($link, $sql);
     if($rs) {
@@ -32,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!DOCTYPE html>
         <html>
             <head>
-                <title>".$_REQUEST["name"]."</title>
+                <title>".$_REQUEST["id"]."</title>
                 <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>
                 <script type=\"text/javascript\" src=\"../js/menu.js\"></script>
                 <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
@@ -90,7 +91,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <b>".$name."</b>
                     </h1>
                     <h2>".$date_start."</h2>
-                    <img src=\"".$coverImg."\" width=\"20%\">
                     <p>".$description."</p>
                 </div>
             </div>
@@ -165,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="date" name="date_end" class="form-control">
             </div>
             <div class="form-group">
-                <label>Cover Image</label>
+                <label>Id</label>
                 <input type="text" name="coverImg" class="form-control" value="Provide a link to Imgur or such service." required>
             </div>
             <div class="form-group">
@@ -184,14 +184,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="point"><input type="radio" id="point" name="type" value="point">Point</label><br>
                 <label for="range"><input type="radio" id="range" name="type" value="range">Range</label><br>
             </div>
-            <!---
-            <div class="form-group">
-                <label>Tag</label><br>
-                <label for="box"><input type="radio" id="box" name="type" value="box" checked>Box</label><br>
-                <label for="point"><input type="radio" id="point" name="type" value="point">Point</label><br>
-                <label for="range"><input type="radio" id="range" name="type" value="range">Range</label><br>
-            </div>
--->
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
@@ -199,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span id="confirmation">
             </span>
         </form>
-</div>
+      </div>
     </div>    
   </body>
 </html>
