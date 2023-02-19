@@ -1,4 +1,4 @@
-# GD-Timeline
+# The GD Timeline
 GDHub Timeline is a website documenting the history of the game Geometry Dash. The website is a part of
 the GDHub franchise, which is a community-driven project that aims to provide resources and information
 to the Geometry Dash community.
