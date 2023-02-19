@@ -46,8 +46,6 @@ fwrite ($filepath, json_encode($finaldata, JSON_PRETTY_PRINT));
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 
-<!-- http://demos.shieldui.com/web/editor/basic-usage use this -->
-
 <body data-nav="false">
     <main>
         <div class="wrapper">
@@ -93,8 +91,8 @@ fwrite ($filepath, json_encode($finaldata, JSON_PRETTY_PRINT));
           <h2 class="nav-link-label rubik-font">Join Us</h2>
           <img class="nav-link-image" src="img/join us.jpg" />
         </a>
-        <a class="nav-link" href="#">
-          <h2 class="nav-link-label rubik-font">About Us)</h2>
+        <a class="nav-link" href="about.html">
+          <h2 class="nav-link-label rubik-font">About Us</h2>
           <img class="nav-link-image" src="img/about.jpg"/>
         </a>
       </div>

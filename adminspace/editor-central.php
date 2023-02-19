@@ -23,36 +23,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/bg.css">
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <script type="text/javascript" src="https://kit.fontawesome.com/944eb371a4.js"></script>
+    <link rel="stylesheet" href="../css/menu.css">
   </head>
-  <body>
-  <header id="menu-container">
-            <div id="menu-wrapper">
-                <div id="hamburger-menu"><span></span><span></span><span></span></div>
-            </div>
-            <ul class="menu-list accordion">
-                <li id="nav1" class="toggle accordion-toggle">
-                    <a class="menu-link" href="../index.php">The Timeline</a>
-                </li>
-                <li id="nav2" class="toggle accordion-toggle">
-                    <span class="icon-plus"></span>
-                    <a class="menu-link" href="#">Documentation</a>
-                </li>
-                <ul class="menu-submenu accordion-content">
-                    <li><a class="head" href="../docs/submit-event.html">How to Become an Author/Editor</a></li>
-                    <li><a class="head" href="../docs/howto-author.html">How to use the Author Central</a></li>
-                    <li><a class="head" href="../docs/howto-editor.html">How to use the Editor Central</a></li>
-                    <li><a class="head" href="../docs/help/help-central.html">Help Central</a></li>
-                </ul>
-                <li id="nav3" class="toggle accordion-toggle">
-                    <span class="icon-plus"></span>
-                    <a class="menu-link" href="#">AdminSpace</a>
-                </li>
-                <ul class="menu-submenu accordion-content">
-                    <li><a class="head" href="author-central.php">Author Central</a></li>
-                    <li><a class="head" href="editor-central.php">Editor Central</a></li>
-                </ul>
-            </ul>
-        </header>
+  <body data-nav="false">
+    <main>
     <h1>Editor Central</h1>
 
     <h2>Events for approval</h2>
@@ -104,5 +79,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="d-flex justify-content-center">
     <a href="edit-data.php" class="btn btn-primary align-self-center">Edit User Details</a>
     </div>
+    </main>
+    <nav>
+      <div id="nav-links">
+        <a class="nav-link" href="../index.php">
+          <h2 class="nav-link-label rubik-font">Home</h2>
+          <img class="nav-link-image" src="../img/homepage.jpg" />
+        </a>
+        <a class="nav-link" href="../docs/submit-event.html">
+          <h2 class="nav-link-label rubik-font">Join Us</h2>
+          <img class="nav-link-image" src="../img/join us.jpg" />
+        </a>
+        <a class="nav-link" href="../about.html">
+          <h2 class="nav-link-label rubik-font">About Us</h2>
+          <img class="nav-link-image" src="../img/about.jpg"/>
+        </a>
+      </div>
+    </nav>
+
+    <button id="nav-toggle" type="button" onclick="toggleNav()">
+      <i class="open fa-light fa-bars-staggered"></i>
+      <i class="close fa-light fa-xmark-large"></i>
+    </button>
   </body>
 </html>

@@ -108,6 +108,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
     <link rel="stylesheet" href="css/bg.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <script type="text/javascript" src="https://kit.fontawesome.com/944eb371a4.js"></script>
     <link rel="stylesheet" href="css/menu.css">
     <style>
         .wrapped-wrapper {
@@ -115,7 +116,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
         }
     </style>
 </head>
-<body>
+<body  data-nav="false">
 <main>
 <div class="wrapped-wrapper">
     <div class="wrapper">
@@ -156,8 +157,8 @@ if($_SERVER["REQUEST_METHOD"] == "GET"){
           <h2 class="nav-link-label rubik-font">Join Us</h2>
           <img class="nav-link-image" src="img/join us.jpg" />
         </a>
-        <a class="nav-link" href="#">
-          <h2 class="nav-link-label rubik-font">About Us)</h2>
+        <a class="nav-link" href="about.html">
+          <h2 class="nav-link-label rubik-font">About Us</h2>
           <img class="nav-link-image" src="img/about.jpg"/>
         </a>
       </div>
