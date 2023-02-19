@@ -103,36 +103,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="css/bg.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        .wrapped-wrapper {
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-<header id="menu-container">
-        <div id="menu-wrapper">
-            <div id="hamburger-menu"><span></span><span></span><span></span></div>
-        </div>
-        <ul class="menu-list accordion">
-            <li id="nav1" class="toggle accordion-toggle">
-                <a class="menu-link" href="index.php">The Timeline</a>
-            </li>
-            <li id="nav2" class="toggle accordion-toggle">
-                <span class="icon-plus"></span>
-                <a class="menu-link" href="#">Documentation</a>
-            </li>
-            <ul class="menu-submenu accordion-content">
-                <li><a class="head" href="docs/submit-event.html">How to Become an Author/Editor</a></li>
-                <li><a class="head" href="docs/howto-author.html">How to use the Author Central</a></li>
-                <li><a class="head" href="docs/howto-editor.html">How to use the Editor Central</a></li>
-                <li><a class="head" href="docs/help/help-central.html">Help Central</a></li>
-            </ul>
-            <li id="nav3" class="toggle accordion-toggle">
-                <span class="icon-plus"></span>
-                <a class="menu-link" href="#">AdminSpace</a>
-            </li>
-            <ul class="menu-submenu accordion-content">
-                <li><a class="head" href="adminspace/author-central.php">Author Central</a></li>
-                <li><a class="head" href="adminspace/editor-central.php">Editor Central</a></li>
-            </ul>
-        </ul>
-    </header>
+    <main>
     <div class="wrapped-wrapper">
     <div class="wrapper">
         <h2>Login</h2>
@@ -162,5 +141,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
     </div>
     </div>
+    </main>
+    <nav>
+      <div id="nav-links">
+        <a class="nav-link" href="index.php">
+          <h2 class="nav-link-label rubik-font">Home</h2>
+          <img class="nav-link-image" src="img/homepage.jpg" />
+        </a>
+        <a class="nav-link" href="docs/submit-event.html">
+          <h2 class="nav-link-label rubik-font">Join Us</h2>
+          <img class="nav-link-image" src="img/join us.jpg" />
+        </a>
+        <a class="nav-link" href="#">
+          <h2 class="nav-link-label rubik-font">About Us)</h2>
+          <img class="nav-link-image" src="img/about.jpg"/>
+        </a>
+      </div>
+    </nav>
+
+    <button id="nav-toggle" type="button" onclick="toggleNav()">
+      <i class="open fa-light fa-bars-staggered"></i>
+      <i class="close fa-light fa-xmark-large"></i>
+    </button>
 </body>
 </html>

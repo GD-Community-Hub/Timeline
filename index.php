@@ -37,76 +37,73 @@ fwrite ($filepath, json_encode($finaldata, JSON_PRETTY_PRINT));
     <script type="text/javascript" src="js/menu.js"></script>
     <script type="text/javascript" src="js/listen.js"></script>
     <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <script type="text/javascript" src="https://kit.fontawesome.com/944eb371a4.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/bg.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 
 <!-- http://demos.shieldui.com/web/editor/basic-usage use this -->
 
-<body>
-<header id="menu-container">
-        <div id="menu-wrapper">
-            <div id="hamburger-menu"><span></span><span></span><span></span></div>
-        </div>
-        <ul class="menu-list accordion">
-            <li id="nav1" class="toggle accordion-toggle">
-                <a class="menu-link" href="index.php">The Timeline</a>
-            </li>
-            <li id="nav2" class="toggle accordion-toggle">
-                <span class="icon-plus"></span>
-                <a class="menu-link" href="#">Documentation</a>
-            </li>
-            <ul class="menu-submenu accordion-content">
-                <li><a class="head" href="docs/submit-event.html">How to Become an Author/Editor</a></li>
-                <li><a class="head" href="docs/howto-author.html">How to use the Author Central</a></li>
-                <li><a class="head" href="docs/howto-editor.html">How to use the Editor Central</a></li>
-                <li><a class="head" href="docs/help/help-central.html">Help Central</a></li>
-            </ul>
-            <li id="nav3" class="toggle accordion-toggle">
-                <span class="icon-plus"></span>
-                <a class="menu-link" href="#">AdminSpace</a>
-            </li>
-            <ul class="menu-submenu accordion-content">
-                <li><a class="head" href="adminspace/author-central.php">Author Central</a></li>
-                <li><a class="head" href="adminspace/editor-central.php">Editor Central</a></li>
-            </ul>
-        </ul>
-    </header>
-    <div class="wrapper">
-    <span id="login-container">
-        <?php
-        if(isset($_SESSION["loggedin"])){
-            if($_SESSION["loggedin"] == true) {
-                echo "<a href='welcome.php' class='logged-in-text'> Hi, <b> " . htmlspecialchars($_SESSION["username"]) . "</b>.</a>";
-            }
-        } else {
-            echo "<a href='login.php' class='logged-in-text'>Log in</a>";
-        }
-        ?>
-    </span>
-        <h1>The Timeline of Geometry Dash's History</h1>
-        <div id="visualization"></div>
-        <div id="loading">Loading...</div>
-        <script src="js/main-timeline.js"></script>
-        <span style="display: hidden;" id="dom-input">
-            <?php
-            $sql = "SELECT id, name, slug from events";
-            $result = mysqli_query($link, $sql) or die("<script>alert('Error in Selecting " . mysqli_error($link) . "');");
-            
-            $dom_input = array();
-            while($row = mysqli_fetch_assoc($result))
-            {
-                $dom_input[] = $row;
-            }
+<body data-nav="false">
+    <main>
+        <div class="wrapper">
+            <span id="login-container">
+                <?php
+                if(isset($_SESSION["loggedin"])){
+                    if($_SESSION["loggedin"] == true) {
+                        echo "<a href='welcome.php' class='logged-in-text'> Hi, <b> " . htmlspecialchars($_SESSION["username"]) . "</b>.</a>";
+                    }
+                } else {
+                    echo "<a href='login.php' class='logged-in-text'>Log in</a>";
+                }
+                ?>
+            </span>
+            <h1>The Timeline of Geometry Dash's History</h1>
+            <div id="visualization"></div>
+            <div id="loading">Loading...</div>
+            <script src="js/main-timeline.js"></script>
+            <span style="display: hidden;" id="dom-input">
+                <?php
+                $sql = "SELECT id, name, slug from events";
+                $result = mysqli_query($link, $sql) or die("<script>alert('Error in Selecting " . mysqli_error($link) . "');");
 
-            $filepath_dom = fopen('js-data.json', 'w+');
-            fwrite ($filepath_dom, json_encode($dom_input, JSON_PRETTY_PRINT));
-            ?>
-        </span>
-    </div>
+                $dom_input = array();
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    $dom_input[] = $row;
+                }
+
+                $filepath_dom = fopen('js-data.json', 'w+');
+                fwrite ($filepath_dom, json_encode($dom_input, JSON_PRETTY_PRINT));
+                ?>
+            </span>
+        </div>
+    </main>
+    <nav>
+      <div id="nav-links">
+        <a class="nav-link" href="index.php">
+          <h2 class="nav-link-label rubik-font">Home</h2>
+          <img class="nav-link-image" src="img/homepage.jpg" />
+        </a>
+        <a class="nav-link" href="docs/submit-event.html">
+          <h2 class="nav-link-label rubik-font">Join Us</h2>
+          <img class="nav-link-image" src="img/join us.jpg" />
+        </a>
+        <a class="nav-link" href="#">
+          <h2 class="nav-link-label rubik-font">About Us)</h2>
+          <img class="nav-link-image" src="img/about.jpg"/>
+        </a>
+      </div>
+    </nav>
+
+    <button id="nav-toggle" type="button" onclick="toggleNav()">
+      <i class="open fa-light fa-bars-staggered"></i>
+      <i class="close fa-light fa-xmark-large"></i>
+    </button>
 </body>
 
 </html>

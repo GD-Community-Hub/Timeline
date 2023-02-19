@@ -5,15 +5,32 @@ if(!isset($_SESSION["isAuthor"]) || $_SESSION["isAuthor"] == "0"){
     header("Location: lurkin.php");
 }
 
+function formatDate($date) {
+    $dateArr = explode('-', $date);
+    $day = $dateArr[2];
+    $month = $dateArr[1];
+    $year = $dateArr[0];
+    return $day.'. '.$month.'. '.$year;
+}
+
 // if form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $slug = $_REQUEST["id"];
-    $name = $_REQUEST["name"];
-    $date_start = $_REQUEST["date_start"];
-    $date_end = $_REQUEST["date_end"];
-    $description = $_REQUEST['desc'];
-    $timelinegroup = $_REQUEST["group"];
-    $type = $_REQUEST["type"];
+        // define variables
+        $slug = $_REQUEST["id"];
+        $name = $_REQUEST["name"];
+        $date_start = $_REQUEST["date_start"];
+        $date_end = $_REQUEST["date_end"];
+        $description = $_REQUEST['desc'];
+        $timelinegroup = $_REQUEST["group"];
+        $type = $_REQUEST["type"];
+        global $confirmation;
+
+        // check the data to make sure its correct format
+        if($type == "range" && $date_end == "") {
+            echo ("<script>alert('Error: If your selected type is 'range', you have to define the End Date.')</script>");
+            die;
+        }
+
 
     // instert into database for timeline use
     $sql = "INSERT INTO events (name, date_start, date_end, description, timelinegroup, type, slug) VALUES ('$name', '$date_start', '$date_end', '$description', '$timelinegroup', '$type', '$slug')";
@@ -27,12 +44,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('ERROR: Wasn't able to submit successfully.');</script>";
     }
 
+    // format the date
+    if($date_end == '') {
+        $date = formatDate($date_start);
+    } else {
+        $date = formatDate($date_start)." - ". formatDate($date_end);
+    }
+
     // make a file with all the stuff
     $mainString = "
         <!DOCTYPE html>
         <html>
             <head>
-                <title>".$slug."</title>
+                <title>".$name."</title>
                 <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>
                 <script type=\"text/javascript\" src=\"../js/menu.js\"></script>
                 <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
@@ -89,8 +113,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <h1>
                         <b>".$name."</b>
                     </h1>
-                    <h2>".$date_start."</h2>
-                    <p>".$description."</p>
+                    <h2>".$date."</h2>
+                    <div>".$description."</div>
                 </div>
             </div>
         </body>
@@ -156,39 +180,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>Please fill this form to submit an entry to the GDT.</p>
         <form method="POST">
             <div class="form-group">
-                <label>Name</label>
+                <label><b>Name</b></label>
                 <input type="text" name="name" class="form-control" required>
             </div>
             <div class="form-group">
-                <label>Date</label>
+                <label><b>Date</b></label>
                 <input type="date" name="date_start" class="form-control" required>
             </div>
             <div class="form-group">
-                <label>End Date (optional)</label>
+                <label><b>End Date (optional)</b></label>
                 <input type="date" name="date_end" class="form-control">
             </div>
             <div class="form-group">
-                <label>Id</label>
-                <input type="text" name="id" class="form-control" value="Provide a link to Imgur or such service." required>
+                <label><b>ID</b></label>
+                <input type="text" name="id" class="form-control" placeholder="The URL to the entry." required>
             </div>
             <div class="form-group">
-            <label>Article content</label>
+            <label><b>Article content</b></label>
                 <textarea class="form-control" name="desc" cols="50" rows="20" id="tinymce"></textarea>
             </div>
             <div class="form-group" id="desc-span">
             </div>
             <div class="form-group">
-                <label for="1"><input type="radio" id="box" name="group" value="1" checked>Updates/Game news</label><br>
-                <label for="2"><input type="radio" id="point" name="group" value="2">Levels</label><br>
-                <label for="3"><input type="radio" id="range" name="group" value="3">Community events</label><br>
+                <label><b>Timeline group</b></label>
+                <label for="1"><input type="radio" id="box" name="group" value="1" checked>Updates/Game news</label>
+                <label for="2"><input type="radio" id="point" name="group" value="2">Levels</label>
+                <label for="3"><input type="radio" id="range" name="group" value="3">Community events</label>
             </div>
             <div class="form-group">
-                <label>Type</label><br>
-                <label for="box"><input type="radio" id="box" name="type" value="box" checked>Box</label><br>
-                <label for="point"><input type="radio" id="point" name="type" value="point">Point</label><br>
-                <label for="range"><input type="radio" id="range" name="type" value="range">Range</label><br>
+                <label><b>Type</b></label>
+                <label for="box"><input type="radio" id="box" name="type" value="box" checked>Box</label>
+                <label for="point"><input type="radio" id="point" name="type" value="point">Point</label>
+                <label for="range"><input type="radio" id="range" name="type" value="range">Range</label>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="flex-direction: row;">
                 <input type="submit" class="btn btn-primary" id="author-submit" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
             </div>
@@ -207,9 +232,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'removeformat | help' + 'save',
                     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
                 });
-                </script>
-            <span id="confirmation">
-            </span>
+            </script>
         </form>
       </div>
     </div>    

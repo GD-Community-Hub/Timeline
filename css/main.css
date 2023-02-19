@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap');
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   margin: 0;
   color: #fff;
@@ -14,6 +18,7 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
+  background-color: #11151C;
 }
 
 .wrapper {
@@ -41,8 +46,7 @@ h3,
 p,
 li {
   font-family: Ubuntu;
-  margin: 5vh;
-  height: 5vh;
+  margin: 3vh;
   color: #fff;
   text-align: center;
 }
@@ -458,4 +462,17 @@ header a {
   h6 {
     margin: 2em;
   }
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.form-control {
+  width: fit-content;
 }
