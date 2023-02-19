@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // instert into database for timeline use
-    $sql = "INSERT INTO events (name, date_start, date_end, description, timelinegroup, type, slug) VALUES ('$name', '$date_start', '$date_end', '$description', '$timelinegroup', '$type', '$slug')";
+    $sql = "INSERT INTO events (name, date_start, date_end, timelinegroup, type, slug) VALUES ('$name', '$date_start', '$date_end', '$timelinegroup', '$type', '$slug')";
     if($date_end == '') {
-        $sql = "INSERT INTO events (name, date_start, description, type, slug) VALUES ('$name', '$date_start', '$description', '$type', '$slug')";
+        $sql = "INSERT INTO events (name, date_start, type, slug) VALUES ('$name', '$date_start', '$type', '$slug')";
     }
     $rs = mysqli_query($link, $sql);
     if($rs) {
@@ -69,12 +69,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <body>
             <main>
             <div class=\"wrapped-wrapper\">
-                <div class=\"wrapper\">
+                <div class=\"wrapper article-wrapper\">
                     <h1>
                         <b>".$name."</b>
                     </h1>
                     <h2>".$date."</h2>
-                    <div>".$description."</div>
+                    <div class=\"content\">".$description."</div>
                 </div>
             </div>
             </main>
@@ -160,9 +160,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
                 <label><b>Timeline group</b></label>
-                <label for="1"><input type="radio" id="box" name="group" value="1" checked>Updates/Game news</label>
-                <label for="2"><input type="radio" id="point" name="group" value="2">Levels</label>
-                <label for="3"><input type="radio" id="range" name="group" value="3">Community events</label>
+                <label for="1"><input type="radio" id="box" name="group" value="updates" checked>Updates/Game news</label>
+                <label for="2"><input type="radio" id="point" name="group" value="levels">Levels</label>
+                <label for="3"><input type="radio" id="range" name="group" value="community">Community events</label>
             </div>
             <div class="form-group">
                 <label><b>Type</b></label>

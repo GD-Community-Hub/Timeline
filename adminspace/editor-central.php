@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <h2>Events for approval</h2>
     <?php
-      $sql = "SELECT id, name, date_start, date_end, description, timelinegroup, type, approved FROM events";
+      $sql = "SELECT id, name, date_start, date_end, timelinegroup, type, approved FROM events";
       $result = mysqli_query($link, $sql);
 
       if($result->num_rows > 0) {
@@ -41,7 +41,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $finalStartDate = date("d. m. Y", strtotime($row["date_start"]));
             $finalEndDate = date("d. m. Y", strtotime($row["date_end"]));
             echo "<table class=\"accept-table\"><tr><th colspan=\"2\">".$row["name"]."</th></tr>";
-            echo "<tr><td class=\"desc\" colspan=\"2\">".$row["description"]."</td></tr>";
             if($row["date_end"] !== null) {
               echo "<tr><td class=\"start\">".$finalStartDate."</td>";
               echo "<td class=\"end\">".$finalEndDate."</td>";
