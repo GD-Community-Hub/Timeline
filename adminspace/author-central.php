@@ -9,9 +9,9 @@ if(!isset($_SESSION["isAuthor"]) || $_SESSION["isAuthor"] == "0"){
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $slug = $_REQUEST["id"];
     $name = $_REQUEST["name"];
-    $date_start = date("d. m. Y", strtotime($_REQUEST["date_start"]));
-    $date_end = date("d. m. Y", strtotime($_REQUEST["date_end"]));
-    $description = $_REQUEST["content"];
+    $date_start = $_REQUEST["date_start"];
+    $date_end = $_REQUEST["date_end"];
+    $description = $_REQUEST['desc'];
     $timelinegroup = $_REQUEST["group"];
     $type = $_REQUEST["type"];
 
@@ -100,6 +100,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $f = fopen("../articles/".$fileName.".html", "w+");
     fwrite($f, $mainString);
     fclose($f);
+
+    header("location: ../articles/".$fileName.".html");
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -108,7 +111,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Author Central - GDT</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="../js/menu.js"></script>
-    <script type="text/javascript" src="../js/listen.js"></script>
     <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/ujyrzbph9buaadvi88n79xzcafcfhf43wk3lyfyc3rcbp6au/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -152,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1>Author Central</h1>
         <h2>Submit an Entry</h2>
         <p>Please fill this form to submit an entry to the GDT.</p>
-        <form method="post">
+        <form method="POST">
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" name="name" class="form-control" required>
@@ -171,12 +173,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
             <label>Article content</label>
-                <textarea class="form-control" cols="50" rows="20" id="tinymce"></textarea>
+                <textarea class="form-control" name="desc" cols="50" rows="20" id="tinymce"></textarea>
             </div>
             <div class="form-group" id="desc-span">
             </div>
             <div class="form-group">
-                <label>Group</label><br>
                 <label for="1"><input type="radio" id="box" name="group" value="1" checked>Updates/Game news</label><br>
                 <label for="2"><input type="radio" id="point" name="group" value="2">Levels</label><br>
                 <label for="3"><input type="radio" id="range" name="group" value="3">Community events</label><br>
@@ -206,23 +207,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'removeformat | help' + 'save',
                     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
                 });
-                document.addEventListener("DOMContentLoaded", function() {
-                    // add event listener to button
-                    document.getElementById("author-submit").addEventListener("click", function() {
-                        function send (e) {
-                          var content = e.data.content;
-                          // send content to PHP file using AJAX
-                          var xhr = new XMLHttpRequest();
-                          xhr.open("POST", "author-central.php");
-                          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                          xhr.onreadystatechange = function() {
-                            if (xhr.readyState === 4 && xhr.status === 200) {
-                              // handle response from PHP file
-                              console.log(xhr.responseText);
-                            }
-                          };
-                          xhr.send(encodeURIComponent(content));
-                    }})});
                 </script>
             <span id="confirmation">
             </span>

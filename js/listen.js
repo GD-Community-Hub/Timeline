@@ -1,5 +1,5 @@
 $.ajax({
-    url: "http://gdtimeline.wz.cz/js-data.json",
+    url: "/js-data.json",
     success: function (data) {
         setTimeout(function () {
             const elements = document.getElementsByClassName("vis-item-content");
