@@ -1,16 +1,16 @@
 main {
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    z-index: 2;
-    transition: transform 500ms cubic-bezier(.13,.53,.38,.97);
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  z-index: 2;
+  transition: transform 500ms cubic-bezier(.13, .53, .38, .97);
 }
 
 .rubik-font {
   font-family: "Rubik", sans-serif;
 }
 
-body[data-nav="true"] > main {
+body[data-nav="true"]>main {
   transform: translateY(-50%);
 }
 
@@ -24,32 +24,32 @@ nav {
   overflow: hidden;
 }
 
-#nav-links {  
+#nav-links {
   display: flex;
   justify-content: space-around;
   gap: clamp(1rem, 2vw, 2rem);
   margin-top: 8vh;
   padding: 0rem clamp(1rem, 2vw, 2rem);
   transform: translateY(70%) scale(0.9);
-  transition: transform 500ms cubic-bezier(.13,.53,.38,.97); 
+  transition: transform 500ms cubic-bezier(.13, .53, .38, .97);
 }
 
-body[data-nav="true"] > nav > #nav-links {
+body[data-nav="true"]>nav>#nav-links {
   transform: translateY(0%) scale(1);
 }
 
-#nav-links > .nav-link {
+#nav-links>.nav-link {
   text-decoration: none;
 }
 
-#nav-links > .nav-link > .nav-link-label {
+#nav-links>.nav-link>.nav-link-label {
   color: white;
   font-size: 1.25rem;
   margin: 0rem;
   text-transform: uppercase;
 }
 
-#nav-links > .nav-link > .nav-link-image {
+#nav-links>.nav-link>.nav-link-image {
   width: max(20vw, 400px);
   aspect-ratio: 1.8 / 1;
   border-radius: 0.5rem;
@@ -84,16 +84,16 @@ body[data-nav="true"] > nav > #nav-links {
   transform: translateX(-50%) scale(0.96);
 }
 
-body[data-nav="true"] > #nav-toggle {
+body[data-nav="true"]>#nav-toggle {
   background-color: rgb(17, 46, 90);
 }
 
-body:not([data-nav="true"]) > #nav-toggle:hover > .open {
+body:not([data-nav="true"])>#nav-toggle:hover>.open {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 
-#nav-toggle > i {
+#nav-toggle>i {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -106,18 +106,34 @@ body:not([data-nav="true"]) > #nav-toggle:hover > .open {
   transition-duration: 400ms;
 }
 
-body[data-nav="true"] > #nav-toggle > .close {
+body[data-nav="true"]>#nav-toggle>.close {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 
-@media screen and (max-width: 768px){
-    #nav-links {
-        flex-direction: column;
-        justify-content: center;
-    }
+@media screen and (max-width: 1200px) {
+  #nav-links {
+    justify-content: center;
+    height: 90vh;
+    margin-top: 0;
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: row;
+  }
 
-    body[data-nav="true"] > main {
-        transform: translateY(-100%);
-    }
+  #nav-links img {
+    height: 20vh;
+    aspect-ratio: 16/6;
+  }
+
+  body[data-nav="true"]>main {
+    transform: translateY(-120%);
+  }
+
+  nav {
+    height: 100vh;
+  }
 }

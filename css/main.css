@@ -26,9 +26,8 @@ body {
 }
 
 #login-container {
-  margin-top: -25px;
   right: 30px;
-  position: absolute;
+  position: fixed;
 }
 
 .logged-in-text {
@@ -59,8 +58,8 @@ p {
   font-family: Ubuntu, sans-serif;
   margin-left: 5%;
   border-color: #222;
-  background: rgb(152,152,152);
-  background: linear-gradient(159deg, rgba(152,152,152,0.8449754901960784) 0%, rgba(103,126,204,0.9066001400560224) 100%);
+  background: rgb(152, 152, 152);
+  background: linear-gradient(159deg, rgba(152, 152, 152, 0.8449754901960784) 0%, rgba(103, 126, 204, 0.9066001400560224) 100%);
   clip-path: polygon(4.167037em 0em,
       calc(100% - 4.167037em) 0em,
       calc(100% - 3.729524em) 0.002065em,
@@ -273,7 +272,7 @@ li>div {
   margin-left: 20%;
 }
 
-header > ul {
+header>ul {
   list-style: none;
 }
 
@@ -476,7 +475,8 @@ header a {
   width: fit-content;
 }
 
-.about-main, .content {
+.about-main,
+.content {
   width: 70vw;
   background-color: rgba(90, 88, 88, 0.5);
   border-radius: 20px;
@@ -492,7 +492,8 @@ header a {
   margin-top: 20px;
 }
 
-.contributors, .contacts {
+.contributors,
+.contacts {
   width: 20vw;
   background-color: rgba(90, 88, 88, 0.5);
   border-radius: 20px;
