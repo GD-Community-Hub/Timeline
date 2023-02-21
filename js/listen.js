@@ -12,14 +12,6 @@ $.ajax({
 
       elements[i].innerHTML = newContent;
     }
-
-    if ($(window).width() < 768) {
-      document.getElementById("title").innerHTML = "The GD Timeline";
-    }
-
-    function reload() {
-      location.reload();
-    }
   },
   error: function (err) {
     console.log("Error", err);
