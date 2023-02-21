@@ -127,6 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <script type="text/javascript" src="https://kit.fontawesome.com/944eb371a4.js"></script>
     <link rel="stylesheet" href="../css/menu.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body data-nav="false">
     <main>
