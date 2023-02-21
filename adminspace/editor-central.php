@@ -15,17 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
   <head>
     <title>Editor Central - GDT</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/timeline-plus/dist/timeline.js"></script>
-    <script type="text/javascript" src="../js/menu.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/timeline-plus@latest/dist/timeline.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/bg.css">
-    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
-    <script type="text/javascript" src="https://kit.fontawesome.com/944eb371a4.js"></script>
-    <link rel="stylesheet" href="../css/menu.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php require "../data/header-admin.php"; ?>
   </head>
   <body data-nav="false">
     <main>
@@ -80,26 +70,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <a href="edit-data.php" class="btn btn-primary align-self-center">Edit User Details</a>
     </div>
     </main>
-    <nav>
-      <div id="nav-links">
-        <a class="nav-link" href="../index.php">
-          <h2 class="nav-link-label rubik-font">Home</h2>
-          <img class="nav-link-image" src="../img/homepage.jpg" />
-        </a>
-        <a class="nav-link" href="../docs/submit-event.html">
-          <h2 class="nav-link-label rubik-font">Join Us</h2>
-          <img class="nav-link-image" src="../img/join us.jpg" />
-        </a>
-        <a class="nav-link" href="../about.html">
-          <h2 class="nav-link-label rubik-font">About Us</h2>
-          <img class="nav-link-image" src="../img/about.jpg"/>
-        </a>
-      </div>
-    </nav>
-
-    <button id="nav-toggle" type="button" onclick="toggleNav()">
-      <i class="open fa-light fa-bars-staggered"></i>
-      <i class="close fa-light fa-xmark-large"></i>
-    </button>
+    <?php require "../data/footer-admin.php"; ?>
   </body>
 </html>

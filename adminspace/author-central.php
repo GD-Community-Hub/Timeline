@@ -58,15 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <html>
             <head>
                 <title>" . $name . "</title>
-                <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>
-                <script type=\"text/javascript\" src=\"../js/menu.js\"></script>
-                <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
-                <link rel=\"stylesheet\" href=\"../css/main.css\">
-                <link rel=\"stylesheet\" href=\"../css/bg.css\">
-                <link rel=\"icon\" type=\"image/x-icon\" href=\"../img/favicon.ico\">
-                <script type=\"text/javascript\" src=\"https://kit.fontawesome.com/944eb371a4.js\"></script>
-                <link rel=\"stylesheet\" href=\"../css/menu.css\">
-                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+                <?php require \"../data/header-html.php\"; ?>
             </head>
             <body>
             <main>
@@ -80,27 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             </main>
-            <nav>
-              <div id=\"nav-links\">
-                <a class=\"nav-link\" href=\"../index.php\">
-                  <h2 class=\"nav-link-label rubik-font\">Home</h2>
-                  <img class=\"nav-link-image\" src=\"../img/homepage.jpg\" />
-                </a>
-                <a class=\"nav-link\" href=\"../docs/submit-event.html\">
-                  <h2 class=\"nav-link-label rubik-font\">Join Us</h2>
-                  <img class=\"nav-link-image\" src=\"../img/join us.jpg\" />
-                </a>
-                <a class=\"nav-link\" href=\"../about.html\">
-                  <h2 class=\"nav-link-label rubik-font\">About Us</h2>
-                  <img class=\"nav-link-image\" src=\"../img/about.jpg\"/>
-                </a>
-              </div>
-            </nav>
-        
-            <button id=\"nav-toggle\" type=\"button\" onclick=\"toggleNav()\">
-              <i class=\"open fa-light fa-bars-staggered\"></i>
-              <i class=\"close fa-light fa-xmark-large\"></i>
-            </button>
+            <?php require \"../data/footer.html\"; ?>
         </body>
         </html>";
   $fileName = trim($slug);
@@ -117,114 +89,83 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 
 <head>
-    <title>Author Central - GDT</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/menu.js"></script>
-    <script type="text/javascript"
-        src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/ujyrzbph9buaadvi88n79xzcafcfhf43wk3lyfyc3rcbp6au/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css"
-        rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/bg.css">
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
-    <script type="text/javascript" src="https://kit.fontawesome.com/944eb371a4.js"></script>
-    <link rel="stylesheet" href="../css/menu.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Author Central - GDT</title>
+  <?php require "../data/header-admin.php"; ?>
+  <script src="https://cdn.tiny.cloud/1/ujyrzbph9buaadvi88n79xzcafcfhf43wk3lyfyc3rcbp6au/tinymce/6/tinymce.min.js"
+    referrerpolicy="origin"></script>
 </head>
 
 <body data-nav="false">
-    <main>
-        <div class="wrapped-wrapper">
-            <div class="wrapper">
-                <h1>Author Central</h1>
-                <h2>Submit an Entry</h2>
-                <p>Please fill this form to submit an entry to the GDT.</p>
-                <form method="POST">
-                    <div class="form-group">
-                        <label><b>Name</b></label>
-                        <input type="text" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Date</b></label>
-                        <input type="date" name="date_start" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label><b>End Date (optional)</b></label>
-                        <input type="date" name="date_end" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label><b>ID</b></label>
-                        <input type="text" name="id" class="form-control" placeholder="The URL to the entry." required>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Article content</b></label>
-                        <textarea class="form-control" name="desc" cols="50" rows="20" id="tinymce"></textarea>
-                    </div>
-                    <div class="form-group" id="desc-span">
-                    </div>
-                    <div class="form-group">
-                        <label><b>Timeline group</b></label>
-                        <label for="1"><input type="radio" id="box" name="group" value="updates" checked>Updates/Game
-                            news</label>
-                        <label for="2"><input type="radio" id="point" name="group" value="levels">Levels</label>
-                        <label for="3"><input type="radio" id="range" name="group" value="community">Community
-                            events</label>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Type</b></label>
-                        <label for="box"><input type="radio" id="box" name="type" value="box" checked>Box</label>
-                        <label for="point"><input type="radio" id="point" name="type" value="point">Point</label>
-                        <label for="range"><input type="radio" id="range" name="type" value="range">Range</label>
-                    </div>
-                    <div class="form-group" style="flex-direction: row;">
-                        <input type="submit" class="btn btn-primary" id="author-submit" value="Submit">
-                        <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-                    </div>
-                    <script>
-                    tinymce.init({
-                        selector: 'textarea#tinymce',
-                        height: 750,
-                        plugins: [
-                            'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-                            'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-                            'insertdatetime', 'media', 'table', 'help', 'wordcount', 'save'
-                        ],
-                        toolbar: 'undo redo | blocks | ' +
-                            'bold italic backcolor | alignleft aligncenter ' +
-                            'alignright alignjustify | bullist numlist outdent indent | ' +
-                            'removeformat | help' + 'save',
-                        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
-                    });
-                    </script>
-                </form>
+  <main>
+    <div class="wrapped-wrapper">
+      <div class="wrapper">
+        <h1>Author Central</h1>
+        <h2>Submit an Entry</h2>
+        <p>Please fill this form to submit an entry to the GDT.</p>
+        <form method="POST">
+          <div class="form">
+            <div>
+              <div class="form-group">
+                <label><b>Name</b></label>
+                <input type="text" name="name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label><b>Date</b></label>
+                <input type="date" name="date_start" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label><b>End Date (optional)</b></label>
+                <input type="date" name="date_end" class="form-control">
+              </div>
+              <div class="form-group">
+                <label><b>ID</b></label>
+                <input type="text" name="id" class="form-control" placeholder="The URL to the entry." required>
+              </div>
+              <div class="form-group">
+                <label><b>Timeline group</b></label>
+                <label for="1"><input type="radio" id="box" name="group" value="updates" checked> Updates/Game
+                  news</label>
+                <label for="2"><input type="radio" id="point" name="group" value="levels"> Levels</label>
+                <label for="3"><input type="radio" id="range" name="group" value="community"> Community
+                  events</label>
+              </div>
+              <div class="form-group">
+                <label><b>Type</b></label>
+                <label for="box"><input type="radio" id="box" name="type" value="box" checked> Box</label>
+                <label for="point"><input type="radio" id="point" name="type" value="point"> Point</label>
+                <label for="range"><input type="radio" id="range" name="type" value="range"> Range</label>
+              </div>
             </div>
-        </div>
-    </main>
-    <nav>
-        <div id="nav-links">
-            <a class="nav-link" href="../index.php">
-                <h2 class="nav-link-label rubik-font">Home</h2>
-                <img class="nav-link-image" src="../img/homepage.jpg" />
-            </a>
-            <a class="nav-link" href="../docs/submit-event.html">
-                <h2 class="nav-link-label rubik-font">Join Us</h2>
-                <img class="nav-link-image" src="../img/join us.jpg" />
-            </a>
-            <a class="nav-link" href="../about.html">
-                <h2 class="nav-link-label rubik-font">About Us</h2>
-                <img class="nav-link-image" src="../img/about.jpg" />
-            </a>
-        </div>
-    </nav>
-
-    <button id="nav-toggle" type="button" onclick="toggleNav()">
-        <i class="open fa-light fa-bars-staggered"></i>
-        <i class="close fa-light fa-xmark-large"></i>
-    </button>
+            <div class="form-group">
+              <label><b>Article content</b></label>
+              <textarea class="form-control" name="desc" cols="50" rows="20" id="tinymce"></textarea>
+            </div>
+          </div>
+          <div class="form-group" style="flex-direction: row;">
+            <input type="submit" class="btn btn-primary" id="author-submit" value="Submit">
+            <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script>
+    tinymce.init({
+      selector: 'textarea#tinymce',
+      height: 575,
+      plugins: [
+        'advlist', 'autolink', 'autosave', 'lists', 'link', 'image', 'charmap', 'preview',
+        'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+        'insertdatetime', 'media', 'table', 'help', 'wordcount', 'save'
+      ],
+      toolbar: 'undo redo | blocks | ' +
+        'bold italic backcolor | alignleft aligncenter ' +
+        'alignright alignjustify | bullist numlist outdent indent | ' +
+        'removeformat | help | save',
+      content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+    });
+  </script>
+  <?php require "../data/footer-admin.php"; ?>
 </body>
 
 </html>
