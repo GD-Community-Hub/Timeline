@@ -1,8 +1,8 @@
 <?php
-define('DB_SERVER', 'sql6.webzdarma.cz');
-define('DB_USERNAME', 'gdtimelinewz4651');
-define('DB_PASSWORD', '5n^89*NMK2UF-Aam#v24');
-define('DB_NAME', 'gdtimelinewz4651');
+define('DB_SERVER', 'llmp.spse-net.cz ');
+define('DB_USERNAME', 'borovesi22');
+define('DB_PASSWORD', 'Qwasyx123');
+define('DB_NAME', 'borovesi22_1');
  
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
