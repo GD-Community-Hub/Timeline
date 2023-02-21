@@ -48,10 +48,11 @@ fwrite($filepath, json_encode($finaldata, JSON_PRETTY_PRINT));
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body data-nav="false">
+<body data-nav="false" onresize="reload()">
   <main>
     <div class="wrapper">
-      <span id="login-container">
+      <h1 id="title">The Timeline of Geometry Dash's History</h1>
+      <div id="login-container">
         <?php
         if (isset($_SESSION["loggedin"])) {
           if ($_SESSION["loggedin"] == true) {
@@ -61,8 +62,12 @@ fwrite($filepath, json_encode($finaldata, JSON_PRETTY_PRINT));
           echo "<a href='login.php' class='logged-in-text'>Log in</a>";
         }
         ?>
-      </span>
-      <h1 id="title">The Timeline of Geometry Dash's History</h1>
+      </div>
+      <script>
+        if ($(window).width() < 768) {
+          document.write('<br>');
+        } 
+      </script>
       <div id="visualization"></div>
       <div id="loading">Loading...</div>
       <span style="display: hidden;" id="dom-input">

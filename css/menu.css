@@ -50,7 +50,7 @@ body[data-nav="true"]>nav>#nav-links {
 }
 
 #nav-links>.nav-link>.nav-link-image {
-  aspect-ratio: 16/9;
+  aspect-ratio: 16 / 9;
   border-radius: 0.5rem;
   margin-top: 0.75rem;
   object-fit: cover;
@@ -110,7 +110,7 @@ body[data-nav="true"]>#nav-toggle>.close {
   transform: translate(-50%, -50%) scale(1);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
   #nav-links {
     justify-content: center;
     height: 90vh;
@@ -124,7 +124,7 @@ body[data-nav="true"]>#nav-toggle>.close {
   }
 
   #nav-links img {
-    width: 80vw;
+    width: 35vw;
   }
 
   body[data-nav="true"]>main {
@@ -133,5 +133,22 @@ body[data-nav="true"]>#nav-toggle>.close {
 
   nav {
     height: 100vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #nav-links img {
+    max-height: 30vw;
+    width: 60vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #nav-links img {
+    height: 30vh;
+  }
+
+  nav {
+    margin-bottom: 2rem;
   }
 }

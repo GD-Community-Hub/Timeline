@@ -12,6 +12,7 @@
 
 main {
   padding-top: 2em;
+  height: 100%;
 }
 
 a {
@@ -35,8 +36,9 @@ body {
 }
 
 #login-container {
-  right: 30px;
-  position: fixed;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 }
 
 .logged-in-text {
@@ -428,6 +430,10 @@ header a {
 }
 
 @media only screen and (max-width: 768px) {
+  body {
+    height: 90vh;
+  }
+
   .docs-wrapper {
     flex-direction: column;
   }
@@ -479,9 +485,23 @@ header a {
   }
 
   #login-container {
-    margin-top: 3.2rem;
-    margin-right: 42%;
-    right: 0;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #vis-timeline {
+    border-radius: 10px;
+  }
+
+  .content {
+    border-radius: 10px;
+    width: 90vw;
+  }
+
+  #title {
+    margin-bottom: 0;
   }
 }
 
