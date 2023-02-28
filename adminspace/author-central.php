@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </html>";
   $fileName = trim($slug);
 
-  $f = fopen("../articles/" . $fileName . ".html", "w+");
+  $f = fopen("../articles/" . $fileName . ".php", "w+");
   fwrite($f, $mainString);
   fclose($f);
 

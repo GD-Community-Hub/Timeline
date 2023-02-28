@@ -50,7 +50,7 @@ $.ajax({
             var slug = data[i].slug;
       
             var newContent =
-              "<a href='articles/" + slug + ".html'>" + originalContent + "</a>";
+              "<a href='articles/" + slug + ".php'>" + originalContent + "</a>";
       
             elements[i].innerHTML = newContent;
           }
