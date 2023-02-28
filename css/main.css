@@ -437,6 +437,7 @@ header a {
 @media only screen and (max-width: 768px) {
   body {
     height: 90vh;
+    height: 100dvh;
   }
 
   .docs-wrapper {
@@ -507,6 +508,28 @@ header a {
 
   #title {
     margin-bottom: 0;
+    content: "The GD Timeline";
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  #tinymce {
+    margin: 1rem
+  }
+
+  .welcome-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .welcome-buttons a {
+    width: 50vw;
+    border-radius: 10px;
   }
 
   .form {

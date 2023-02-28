@@ -143,7 +143,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php echo $confirm_password_err; ?>
                         </span>
                     </div>
+<<<<<<< Updated upstream
                     <div class="form-group">
+=======
+                    <div class="form-group" style="flex-direction: row;">
+>>>>>>> Stashed changes
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <input type="reset" class="btn btn-secondary ml-2" value="Reset">
                     </div>

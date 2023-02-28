@@ -27,7 +27,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <main>
         <div class="wrapped-wrapper">
             <div class="wrapper">
+<<<<<<< Updated upstream
                 <h1 class="my-5">Hi,&nbsp;<b>
+=======
+                <h1 class="my-5 welcome-text">Hi,&nbsp;<b>
+>>>>>>> Stashed changes
                         <?php echo htmlspecialchars($_SESSION["username"]); ?>
                     </b>. <wbr>Welcome&nbsp;to&nbsp;our&nbsp;site.</h1>
                 <script>
