@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             </main>
-            <?php require \"../data/footer.html\"; ?>
+            <?php require \"../data/footer-html.php\"; ?>
         </body>
         </html>";
   $fileName = trim($slug);
