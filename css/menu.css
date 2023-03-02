@@ -152,3 +152,7 @@ body[data-nav="true"]>#nav-toggle>.close {
     margin-bottom: 2rem;
   }
 }
+
+.hidden-overflow {
+  overflow: hidden;
+}

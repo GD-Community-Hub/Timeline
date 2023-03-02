@@ -4,11 +4,11 @@
             <h2 class="nav-link-label rubik-font">Home</h2>
             <img class="nav-link-image" src="img/homepage.jpg" />
         </a>
-        <a class="nav-link" href="docs/submit-event.html">
+        <a class="nav-link" href="docs/submit-event.php">
             <h2 class="nav-link-label rubik-font">Join Us</h2>
             <img class="nav-link-image" src="img/join us.jpg" />
         </a>
-        <a class="nav-link" href="about.html">
+        <a class="nav-link" href="about.php">
             <h2 class="nav-link-label rubik-font">About Us</h2>
             <img class="nav-link-image" src="img/about.jpg" />
         </a>
