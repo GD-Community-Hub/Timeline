@@ -2,7 +2,7 @@
         <!DOCTYPE html>
         <html>
             <head>
-                <title>Update 1.4</title>
+                <title>Update 1.3</title>
                 <?php require "../data/header-html.php"; ?>
             </head>
             <body>
@@ -10,20 +10,19 @@
             <div class="wrapped-wrapper">
                 <div class="wrapper article-wrapper">
                     <h1>
-                        <b>Update 1.4</b>
+                        <b>Update 1.3</b>
                     </h1>
-                    <h2>26. 12. 2013</h2>
-                    <div class="content"><p>Geometry Dash 1.4 is released on 26 December 2013.</p>
+                    <h2>20. 11. 2013</h2>
+                    <div class="content"><p>Geometry Dash 1.3 is released on 20 November 2013.</p>
 <p><strong>Main Level Added:</strong></p>
 <ul>
-<li>Clutterfunk</li>
+<li>xStep</li>
 </ul>
 <p><strong>New things:</strong></p>
 <ul>
-<li>Big and small size portals.</li>
-<li>Saws.</li>
-<li>New Editor objects.</li>
-<li>Ship icons and more customizable characters.</li>
+<li>Stars for beating levels.</li>
+<li>New editor decorations.</li>
+<li>More customizable characters.</li>
 <li>Bug fixes.</li>
 </ul></div>
                 </div>
