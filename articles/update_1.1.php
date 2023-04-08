@@ -21,7 +21,7 @@
 <ul>
 <li>Mirror Portal and more objects.</li>
 <li>More customizable characters.</li>
-<li>Commenting on users levels possible.</li>
+<li>You can now comment on user levels.</li>
 <li>Bug fixes</li>
 </ul></div>
                 </div>
