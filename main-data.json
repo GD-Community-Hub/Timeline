@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 [
     {
         "id": "1",
@@ -38,7 +37,7 @@
         "group": "1",
         "type": "box",
         "approved": "1",
-        "slug": "update_1.3"
+        "slug": "update_1.2"
     },
     {
         "id": "7",
@@ -120,127 +119,4 @@
         "approved": "1",
         "slug": "update_2.1"
     }
-=======
-[
-    {
-        "id": "1",
-        "content": "Official Release",
-        "start": "2013-08-13",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "official_release"
-    },
-    {
-        "id": "2",
-        "content": "Update 1.1",
-        "start": "2013-09-10",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_1.1"
-    },
-    {
-        "id": "4",
-        "content": "Update 1.3",
-        "start": "2013-11-20",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_1.3"
-    },
-    {
-        "id": "5",
-        "content": "Update 1.2",
-        "start": "2013-10-14",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_1.3"
-    },
-    {
-        "id": "7",
-        "content": "Update 1.4",
-        "start": "2013-12-26",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_1.4"
-    },
-    {
-        "id": "9",
-        "content": "Update 1.5",
-        "start": "2014-01-30",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_1.5"
-    },
-    {
-        "id": "10",
-        "content": "Update 1.6",
-        "start": "2014-03-25",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_1.6"
-    },
-    {
-        "id": "11",
-        "content": "Update 1.7",
-        "start": "2014-05-21",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_1.7"
-    },
-    {
-        "id": "12",
-        "content": "Update 1.8",
-        "start": "2014-08-07",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_1.8"
-    },
-    {
-        "id": "13",
-        "content": "Update 1.9",
-        "start": "2014-11-09",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_1.9"
-    },
-    {
-        "id": "14",
-        "content": "Update 2.0",
-        "start": "2015-08-26",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_2.0"
-    },
-    {
-        "id": "15",
-        "content": "Update 2.1",
-        "start": "2017-01-06",
-        "end": null,
-        "group": "1",
-        "type": "box",
-        "approved": "1",
-        "slug": "update_2.1"
-    }
->>>>>>> Stashed changes
 ]

@@ -589,6 +589,17 @@ header a {
   margin-top: 20px;
 }
 
+@media screen and (max-width: 1200px) {
+  .about-section {
+    flex-direction: column;
+  }
+
+  .contributors,
+  .contacts {
+    width: 80vw!important;
+  }
+}
+
 .contributors,
 .contacts {
   width: 20vw;
