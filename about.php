@@ -41,6 +41,7 @@
                 <a href="https://discord.gg/XuW3yCZXdA" class="btn btn-primary">TGT Discord Server</a>
             </div>
         </div>
+        <br><br><br>
     </main>
     <?php require "data/footer.php"; ?>
     </button>

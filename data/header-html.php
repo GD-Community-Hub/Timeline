@@ -8,5 +8,17 @@
 <link rel="stylesheet" href="../css/main.css">
 <link rel="stylesheet" href="../css/menu.css">
 <link rel="stylesheet" href="../css/bg.css">
-<link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="HandheldFriendly" content="True">
+
+<meta name="theme-color" content="#11151C">
+<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+<meta name="title" content="The Timeline of GD History">
+<meta name="description" content="Documenting the things that have passed, in Geometry Dash.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://borovesi22.llmp.spse-net.cz/">
+<meta property="og:title" content="The Timeline of GD History">
+<meta property="og:description" content="Documenting the things that have passed, in Geometry Dash.">
