@@ -18,7 +18,7 @@
 <p>Cycles</p>
 <p><strong>New things:</strong></p>
 <p>Ball Gamemode.</p>
-<p>Stars,&nbsp;achievements and rewards.</p>
+<p>Achievements and rewards.</p>
 <p>More customizable characters.</p>
 <p>Bug fixes.</p></div>
                 </div>

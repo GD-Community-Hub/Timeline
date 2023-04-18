@@ -16,7 +16,7 @@
                     <div class="content"><p>Geometry Dash 1.9 is released on Android on 9 November 2014.</p>
 <p><strong>Main Levels Added:</strong></p>
 <ul>
-<li>Blast Porcessing</li>
+<li>Blast Processing</li>
 <li>Theory of Everything 2</li>
 </ul>
 <p><strong>New things:</strong></p>
